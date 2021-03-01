@@ -1,3 +1,3 @@
 <% flash.each do |stock_type, stock| %>
-  <div><%= stock %></div>
+  <div class="alert alert-<%= stock_type %>"><%= stock %></div>
 <% end %>

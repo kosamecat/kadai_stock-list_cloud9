@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   
   #stocks
-  root to: 'stocks#index'
+  root to: 'top#index'
   
-  resources :stocks, excepts:[:index]
+  resources :stocks
   
   #calc
   

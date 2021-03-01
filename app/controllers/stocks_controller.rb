@@ -1,10 +1,11 @@
 class StocksController < ApplicationController
+  before_action :set_stock, only: [:show, :edit, :update, :destroy]
+  
   def index
-      @stocks = Stock.all
+      @stocks = Stock.all.order("name ASC")
   end
 
   def show
-      @stock = Stock.find(params[:id])
   end
 
   def new
@@ -18,29 +19,25 @@ class StocksController < ApplicationController
       flash[:success] = '在庫 が正常に追加されました'
       redirect_to @stock
     else
-      flash.now[:danger] = '在庫 が追加されませんでした'
+      flash.now[:danger] = 'ERROR'
       render :new
     end
   end
   
   def edit
-    @stock = Stock.find(params[:id])
   end
   
   def update
-    @stock = Stock.find(params[:id])
-
     if @stock.update(stock_params)
       flash[:success] = '在庫 は正常に更新されました'
       redirect_to @stock
     else
-      flash.now[:danger] = '在庫 は更新されませんでした'
+      flash.now[:danger] = 'ERROR'
       render :edit
     end
   end
 
   def destroy
-    @stock = Stock.find(params[:id])
     @stock.destroy
 
     flash[:success] = '在庫 は正常に削除されました'
@@ -49,9 +46,15 @@ class StocksController < ApplicationController
   
   private
 
-  # Strong Parameter
+ 
+  
+  def set_stock
+    @stock = Stock.find(params[:id])
+  end
+  
+   # Strong Parameter
   def stock_params
-    params.require(:stock).permit(:name)
+    params.require(:stock).permit(:name, :price, :amount)
   end
   
 end

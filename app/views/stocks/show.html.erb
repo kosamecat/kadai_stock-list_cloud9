@@ -1,7 +1,24 @@
 <h1>id: <%= @stock.id %> の商品在庫詳細ページ</h1> 
 
-<p><%= @stock.name %>の在庫は<%= @stock.amount %>個です</p>
+<table class="table table-bordered">
+  <tr>
+    <th>id</th>
+    <td><%= @stock.id %></td>
+  </tr>
+  <tr>
+    <th>商品名</th>
+    <td><%= @stock.name %></td>
+  </tr>
+  <tr>
+    <th>在庫量</th>
+    <td><%= @stock.amount %></td>
+  </tr>
+  <tr>
+    <th>販売価格</th>
+    <td><%= @stock.price %></td>
+  </tr>
+</table>
 
-<%= link_to '一覧に戻る', stocks_path %>
-<%= link_to 'この在庫を編集する', edit_stock_path(@stock) %>
-<%= link_to 'この在庫を削除する', @stock, method: :delete, data: { confirm: '本当に削除してよろしいですか？' } %>
+<%= link_to '一覧に戻る', stocks_path, class: 'btn btn-default' %>
+<%= link_to 'このメッセージを編集する', edit_stock_path(@stock), class: 'btn btn-default' %>
+<%= link_to 'このメッセージを削除する', @stock, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>

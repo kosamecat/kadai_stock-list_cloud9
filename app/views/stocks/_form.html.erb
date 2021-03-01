@@ -1,0 +1,33 @@
+<div class="row">
+  <div class="col-xs-6">
+
+<%= form_for(stock) do |f| %>
+  <% if stock.errors.any? %>
+    <div class="alert alert-warning">
+      <ul>
+        <% stock.errors.full_messages.each do |stock| %>
+          <li><%= stock %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+ <div class="form-group"> 
+  <%= f.label :name, '商品名(8文字以内)' %>
+  <%= f.text_field :name %>
+ </div>
+  
+ <div class="form-group"> 
+  <%= f.label :amount, '在庫量' %>
+  <%= f.text_field :amount, placeholder: 1 %>
+ </div>
+  
+  <%= f.submit '投稿', class: 'btn btn-primary' %>
+<% end %>
+
+<br>
+
+<%= link_to 'TOPに戻る', root_path, class: 'btn btn-default' %>
+
+ </dvi>
+</div> 

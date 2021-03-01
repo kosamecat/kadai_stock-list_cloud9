@@ -1,9 +1,4 @@
 <h1>在庫新規追加ページ</h1>
 
-<%= form_for(@stock) do |f| %>
-  <%= f.label :name, '商品名' %>
-  <%= f.text_field :name %>
-  <%= f.submit '投稿' %>
-<% end %>
+<%= render 'form', stock: @stock %>
 
-<%= link_to '一覧に戻る', root_path %>

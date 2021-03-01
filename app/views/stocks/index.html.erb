@@ -1,15 +1,25 @@
-<h1>商品在庫一覧</h1>
+<h1>在庫チェック</h1>
 
-<%= link_to '新規商品の追加', new_stock_path %>
+<% if @stocks.any? %>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>商品名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @stocks.each do |stock| %>
+        <tr>
+          <td><%= link_to stock.id, stock %></td>
+          <td><%= stock.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% end %>
 
-<ul>
-  <% @stocks.each do |stock| %>
-    <li>商品番号:<%= link_to stock.id, stock %></li>
-    <li>商品名：<%= stock.name %></li>
-    <li>在庫量：<%= stock.amount %>個</li>
-    <li>販売価格：<%= stock.price %>円</li>
-    ----------------------------------
-  <% end %>
-</ul>
+
+<%= link_to 'TOPに戻る', root_path, class: 'btn btn-default' %>
 
 
