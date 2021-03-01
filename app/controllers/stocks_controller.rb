@@ -7,12 +7,12 @@ class StocksController < ApplicationController
 
   def show
   end
-
+  
   def new
     @stock = Stock.new
   end
 
-  def create
+  def addstock
     @stock = Stock.new(stock_params)
 
     if @stock.save
@@ -22,6 +22,7 @@ class StocksController < ApplicationController
       flash.now[:danger] = 'ERROR'
       render :new
     end
+    
   end
   
   def edit
@@ -44,6 +45,13 @@ class StocksController < ApplicationController
     redirect_to root_url
   end
   
+  def deleteall
+    Stock.destroy_all
+    
+    flash[:success] = '在庫 は全て削除されました'
+    redirect_to root_url
+  end
+  
   private
 
  
@@ -54,7 +62,7 @@ class StocksController < ApplicationController
   
    # Strong Parameter
   def stock_params
-    params.require(:stock).permit(:name, :price, :amount)
+    params.require(:stock).permit(:name, :amount)
   end
   
 end

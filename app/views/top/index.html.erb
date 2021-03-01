@@ -5,4 +5,5 @@
 <p>(3)販売</p>
 <p>(4)売上チェック</p>
 <p>(5)全削除</p>
+<%= link_to '在庫を全削除する', deleteall_stock_path, method: :delete, data: { confirm: '本当に削除してよろしいですか？' }, class: 'btn btn-danger' %>
 
